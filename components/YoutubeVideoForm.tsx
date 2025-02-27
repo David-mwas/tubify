@@ -4,7 +4,7 @@ import AnalyzeButton from "./AnalyzeButton";
 import { analyzeYoutubeVieo } from "@/actions/AnalyzeYoutubeVideo";
 function YoutubeVideoForm() {
   return (
-    <div className="w-full max-w-xl mx-auto">
+    <div className="w-full max-w-xl mx-auto z-[99]">
       <Form
         action={analyzeYoutubeVieo}
         className="flex flex-col sm:flex-row gap-2 items-center"

@@ -1,4 +1,5 @@
 import AgentPulse from "@/components/AgentPulse";
+import { BackgroundBeams } from "@/components/ui/background-beams";
 import YoutubeVideoForm from "@/components/YoutubeVideoForm";
 import { Brain, MessagesSquare, Video } from "lucide-react";
 import Image from "next/image";
@@ -53,13 +54,13 @@ export default function Home() {
   return (
     <div className="min-h-screen">
       {/* Hero section */}
-      <section className="py-20 bg-gradient-to-b from-white to-gray-50">
-        <div className="container mx-auto px-4 max-w-6xl">
+      <section className="py-20 bg-slate-800">
+        <div className="container mx-auto px-4 max-w-6xl z-[99]">
           <div className="flex flex-col items-center gap-10 text-center mb-12">
             <AgentPulse size="large" color="green" />
-            <h2 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6 ">
+            <h2 className="text-4xl md:text-6xl font-bold text-[#9ae9e9] mb-6 ">
               Meet Your Personal{" "}
-              <span className="bg-gradient-to-r from-blue-500 to-blue-400 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-indigo-500 to-indigo-300 bg-clip-text text-transparent">
                 AI Content Agent
               </span>
             </h2>
@@ -70,6 +71,9 @@ export default function Home() {
             <YoutubeVideoForm />
           </div>
         </div>
+       
+          <BackgroundBeams  className="z-1"/>
+     
       </section>
 
       {/* Features section */}
@@ -128,7 +132,7 @@ export default function Home() {
       </section>
 
       {/* Footer section */}
-      <section className="py-20 px-4 md:px-0 bg-gradient-to-r from-blue-600 to blue-400">
+      <section className="py-20 px-4 md:px-0 bg-slate-800">
         <div className="text-center">
           <h2 className="text-3xl font-bold text-white mb-6">
             Ready To Meet Your AI Content Agent
@@ -137,6 +141,7 @@ export default function Home() {
             Join creators leveraging AI to unlock content insights
           </p>
         </div>
+        <BackgroundBeams />
       </section>
     </div>
   );
