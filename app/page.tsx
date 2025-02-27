@@ -3,7 +3,9 @@ import AgentPulse from "@/components/AgentPulse";
 import BackgroundBeams from "@/components/ui/background-beams";
 import YoutubeVideoForm from "@/components/YoutubeVideoForm";
 import { Brain, MessagesSquare, Video } from "lucide-react";
-import { motion } from "framer-motion";
+import { motion, useAnimation } from "framer-motion";
+import { useEffect } from "react";
+import { useInView } from "react-intersection-observer";
 
 export default function Home() {
   const features = [
@@ -49,24 +51,61 @@ export default function Home() {
       icon: MessagesSquare,
     },
   ];
+
+  const [ref, inView] = useInView({
+    triggerOnce: false,
+  });
+
+  const controls = useAnimation();
+
+  useEffect(() => {
+    if (inView) {
+      controls.start({ x: 0, y: 0, opacity: 1, rotate: 360 });
+    }
+  }, [controls, inView]);
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen" ref={ref}>
       {/* Hero section */}
       <section className="py-20 bg-slate-800">
         <div className="container mx-auto px-4 max-w-6xl z-[99]">
           <div className="flex flex-col items-center gap-10 text-center mb-12">
-            <AgentPulse size="large" color="green" animate="animate-bounce" />
-            <h2 className="text-4xl md:text-6xl font-bold text-[#9ae9e9] mb-6 ">
+            <motion.div
+              className="z-[99]"
+              initial={{ y: -100, opacity: 0 }} // Start from above with opacity 0
+              animate={{ y: 0, opacity: 1 }} // Drop into place
+              transition={{
+                type: "spring",
+                stiffness: 300,
+                damping: 10,
+                delay: 0.8,
+              }} // Bouncy effect
+            >
+              <AgentPulse size="large" color="green" animate="animate-bounce" />
+            </motion.div>
+            <h2 className="text-4xl md:text-6xl font-bold text-[#9ae9e9] mb-6 z-[99]">
               Meet Your Personal{" "}
               <span className="bg-gradient-to-r from-indigo-500 to-indigo-300 bg-clip-text text-transparent">
                 AI Content Agent
               </span>
             </h2>
-            <p className="text-xl text-gray-400 mb-8 max-w-2xl mx-auto">
+            <p className="text-xl text-gray-400 mb-8 max-w-2xl mx-auto z-[99]">
               Transform your video content with AI-powered analysis,
               transcription and insights. Get started in milliseconds
             </p>
-            <YoutubeVideoForm />
+            <motion.div
+              className="w-full max-w-lg mx-auto z-[99]"
+              initial={{ x: "0", y: "-6000%", opacity: 0 }}
+              animate={controls}
+              transition={{
+                ease: "easeInOut",
+                duration: 0.3,
+                type: "spring",
+                stiffness: 50,
+                damping: 10,
+              }} // Bouncy effect
+            >
+              <YoutubeVideoForm />
+            </motion.div>
           </div>
         </div>
 
