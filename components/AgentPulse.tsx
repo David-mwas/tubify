@@ -6,9 +6,11 @@ type Color = "blue" | "green" | "purple";
 function AgentPulse({
   size = "medium",
   color = "blue",
+  animate="animate-pulse"
 }: {
   size: Size;
   color: Color;
+  animate: string;
 }) {
   const sizeClasses = {
     small: "w-4 h-4",
@@ -22,7 +24,7 @@ function AgentPulse({
   };
   return (
     <div
-      className={`rounded-full flex items-center justify-center ${sizeClasses[size]} ${colorClasses[color]} rounded-full animate-pulse z-[99]`}
+      className={`rounded-full flex items-center justify-center ${sizeClasses[size]} ${colorClasses[color]} rounded-full ${animate} z-[99]`}
     ></div>
   );
 }

@@ -57,7 +57,7 @@ export default function Home() {
       <section className="py-20 bg-slate-800">
         <div className="container mx-auto px-4 max-w-6xl z-[99]">
           <div className="flex flex-col items-center gap-10 text-center mb-12">
-            <AgentPulse size="large" color="green" />
+            <AgentPulse size="large" color="green" animate="animate-bounce" />
             <h2 className="text-4xl md:text-6xl font-bold text-[#9ae9e9] mb-6 ">
               Meet Your Personal{" "}
               <span className="bg-gradient-to-r from-indigo-500 to-indigo-300 bg-clip-text text-transparent">
@@ -71,9 +71,8 @@ export default function Home() {
             <YoutubeVideoForm />
           </div>
         </div>
-       
-          <BackgroundBeams  className="z-1"/>
-     
+
+        <BackgroundBeams className="z-1" />
       </section>
 
       {/* Features section */}

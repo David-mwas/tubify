@@ -11,7 +11,7 @@ function Header() {
         <div className="flex items-center justify-between">
           <div className="flex items-center justify-between h-16">
             <Link href="/" className="flex items-center  gap-4">
-              <AgentPulse size="small" color="purple" />
+              <AgentPulse size="small" color="blue" animate="animate-pulse"/>
               <h1 className="text-3xl tracking-widest font-bold bg-gradient-to-r from-blue-600 to-blue-400 bg-clip-text text-transparent">
                 Tubify
               </h1>
