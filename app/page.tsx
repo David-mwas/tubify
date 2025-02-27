@@ -1,11 +1,11 @@
 "use client";
 import AgentPulse from "@/components/AgentPulse";
-import BackgroundBeams from "@/components/ui/background-beams";
 import YoutubeVideoForm from "@/components/YoutubeVideoForm";
 import { Brain, MessagesSquare, Video } from "lucide-react";
 import { motion, useAnimation } from "framer-motion";
 import { useEffect } from "react";
 import { useInView } from "react-intersection-observer";
+import BackgroundBeams from "@/components/ui/background-beams";
 
 export default function Home() {
   const features = [
@@ -77,7 +77,7 @@ export default function Home() {
                 type: "spring",
                 stiffness: 300,
                 damping: 10,
-                delay: 0.8,
+                delay: 1,
               }} // Bouncy effect
             >
               <AgentPulse size="large" color="green" animate="animate-bounce" />
@@ -191,16 +191,68 @@ export default function Home() {
       </section>
 
       {/* Footer section */}
-      <section className="py-20 px-4 md:px-0 bg-slate-800">
-        <div className="text-center">
-          <h2 className="text-3xl font-bold text-white mb-6">
-            Ready To Meet Your AI Content Agent
+      {/* Footer section */}
+      <section className="py-12 px-4 md:px-0 bg-slate-800">
+        <div className="container mx-auto text-center">
+          {/* Heading */}
+          <h2 className="text-3xl font-bold text-white mb-2">
+            Ready To Meet Your AI Content Agent?
           </h2>
-          <p className="text-xl text-blue-50">
-            Join creators leveraging AI to unlock content insights
+          <p className="text-base text-blue-50 max-w-2xl mx-auto mb-2">
+            Join creators leveraging AI to unlock content insights and optimize
+            their strategy.
+          </p>
+
+          {/* Call-to-Action Button */}
+          {/* <a
+            href="#"
+            className="px-6 py-3 bg-indigo-500 text-white font-semibold rounded-full shadow-lg hover:bg-indigo-600 transition duration-300"
+          >
+            Get Started for Free
+          </a> */}
+
+          {/* Social Media Links */}
+          <div className="flex justify-center mt-4 space-x-6">
+            <a href="#" className="text-white hover:text-indigo-400">
+              <i className="fab fa-twitter text-2xl"></i>
+            </a>
+            <a href="#" className="text-white hover:text-indigo-400">
+              <i className="fab fa-facebook text-2xl"></i>
+            </a>
+            <a href="#" className="text-white hover:text-indigo-400">
+              <i className="fab fa-linkedin text-2xl"></i>
+            </a>
+            <a href="#" className="text-white hover:text-indigo-400">
+              <i className="fab fa-instagram text-2xl"></i>
+            </a>
+          </div>
+
+          {/* Footer Navigation */}
+          <div className="mt-8">
+            <ul className="flex justify-center space-x-6 text-blue-200 text-sm">
+              <li>
+                <a href="#" className="hover:text-white">
+                  Privacy Policy
+                </a>
+              </li>
+              <li>
+                <a href="#" className="hover:text-white">
+                  Terms of Service
+                </a>
+              </li>
+              <li>
+                <a href="#" className="hover:text-white">
+                  Contact Us
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          {/* Copyright */}
+          <p className="text-gray-400 text-sm mt-6">
+            &copy; {new Date().getFullYear()} Tubify. All rights reserved.
           </p>
         </div>
-        <BackgroundBeams />
       </section>
     </div>
   );
