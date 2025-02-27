@@ -1,36 +1,34 @@
+"use client";
 import AgentPulse from "@/components/AgentPulse";
-import { BackgroundBeams } from "@/components/ui/background-beams";
+import BackgroundBeams from "@/components/ui/background-beams";
 import YoutubeVideoForm from "@/components/YoutubeVideoForm";
 import { Brain, MessagesSquare, Video } from "lucide-react";
-import Image from "next/image";
-import { title } from "process";
+import { motion } from "framer-motion";
 
 export default function Home() {
   const features = [
     {
       title: "AI Analysis",
       description:
-        "Get dee insights into your video content with our advanced AI analysis.Understand viewr engagement and content quality",
+        "Get deep insights into your video content with our advanced AI analysis. Understand viewer engagement and content quality.",
       icon: Brain,
       iconBg: "bg-blue-600",
       iconColor: "text-white",
     },
-
     {
-      title: "AI Analysis",
+      title: "Content Optimization",
       description:
-        "Get dee insights into your video content with our advanced AI analysis.Understand viewr engagement and content quality",
+        "Optimize your video content for better reach and engagement with AI-powered recommendations.",
       icon: Brain,
-      iconBg: "bg-blue-600",
+      iconBg: "bg-green-600",
       iconColor: "text-white",
     },
-
     {
-      title: "AI Analysis",
+      title: "Engagement Insights",
       description:
-        "Get dee insights into your video content with our advanced AI analysis.Understand viewr engagement and content quality",
+        "Understand how your audience interacts with your content and improve your strategy.",
       icon: Brain,
-      iconBg: "bg-blue-600",
+      iconBg: "bg-purple-600",
       iconColor: "text-white",
     },
   ];
@@ -81,26 +79,37 @@ export default function Home() {
           <h2 className="text-3xl font-bold text-center mb-12">
             Powerful Features for Content Creators
           </h2>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <motion.div
+            className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.5 }}
+            variants={{
+              visible: { transition: { staggerChildren: 0.2 } },
+            }}
+          >
             {features.map((feature, index) => {
               const Icon = feature.icon;
               return (
-                <div
+                <motion.div
                   key={index}
                   className="bg-white p-6 rounded-xl border border-gray-200 hover:border-blue-500 transition-all duration-300"
+                  whileInView={{ opacity: 1, y: 0 }}
+                  initial={{ opacity: 0, y: 50 }}
+                  transition={{ duration: 0.7, ease: "easeOut" }}
+                  viewport={{ once: true }}
                 >
                   <div
                     className={`w-12 h-12 rounded-lg flex items-center justify-center mb-4 ${feature.iconBg}`}
                   >
                     <Icon className={`w-6 h-6 ${feature.iconColor}`} />
                   </div>
-                  <h3>{feature.title}</h3>
-                  <p>{feature.description}</p>
-                </div>
+                  <h3 className="font-semibold text-lg">{feature.title}</h3>
+                  <p className="text-gray-600">{feature.description}</p>
+                </motion.div>
               );
             })}
-          </div>
+          </motion.div>
         </div>
       </section>
 
@@ -110,23 +119,35 @@ export default function Home() {
           <h2 className="text-3xl font-bold text-center mb-12">
             Meet Your AI Agent in 3 Simple Steps
           </h2>
-          <div className="grid md:grid-cols-3 gap-8">
+          <motion.div
+            className="grid md:grid-cols-3 gap-8"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.5 }}
+            variants={{
+              visible: { transition: { staggerChildren: 0.2 } },
+            }}
+          >
             {steps.map((step, index) => {
               const Icon = step.icon;
               return (
-                <div
+                <motion.div
                   key={index}
-                  className="text-center p-6 roundex-xl bg-white shadow-md hover:shadow-lg transition-all"
+                  className="text-center p-6 rounded-xl bg-white shadow-md hover:shadow-lg transition-all"
+                  whileInView={{ opacity: 1, y: 0 }}
+                  initial={{ opacity: 0, y: 50 }}
+                  transition={{ duration: 0.5, ease: "easeOut" }}
+                  viewport={{ once: true }}
                 >
-                  <div className="w-16 h-16 bg-gradient-to-r from-blue-600 to-blue-400  rounded-full flex items-center justify-center mb-4 mx-auto ">
+                  <div className="w-16 h-16 bg-gradient-to-r from-blue-600 to-blue-400 rounded-full flex items-center justify-center mb-4 mx-auto">
                     <Icon className="w-8 h-8 text-white" />
                   </div>
                   <h3 className="text-xl font-semibold mb-2">{step.title}</h3>
                   <p className="text-gray-600">{step.description}</p>
-                </div>
+                </motion.div>
               );
             })}
-          </div>
+          </motion.div>
         </div>
       </section>
 
